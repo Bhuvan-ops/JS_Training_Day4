@@ -1,0 +1,6 @@
+const arr1 = [1, 2, 3]
+const arr2 = [2, 4]
+const newarr1 = arr1.filter((value)=>!arr2.includes(value));
+const newarr2 = arr2.filter((value)=>!arr1.includes(value));
+const arr = [...newarr1,...newarr2]
+console.log(arr)
