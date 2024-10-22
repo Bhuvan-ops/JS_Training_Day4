@@ -1,0 +1,47 @@
+const students = [
+  { name: "Alice", scores: { math: 85, science: 92, english: 78 } },
+  { name: "Bob", scores: { math: 90, science: 88, english: 94 } },
+  { name: "Charlie", scores: { math: 78, science: 85, english: 80 }},
+  { name: "David", scores: { math: 92, science: 95, english: 91 } },
+  { name: "Eve", scores: { math: 88, science: 79, english: 85 } }
+];
+
+const subjectTotals = {};
+const studentTotals = [];
+
+students.forEach(student => {
+  const { name, scores } = student;
+  let totalScore = 0;
+  let subjectCount = 0;
+
+  for (const subject in scores) {
+    totalScore += scores[subject];
+    subjectCount++;
+
+    if (!subjectTotals[subject]) {
+      subjectTotals[subject] = 0;
+    }
+    subjectTotals[subject] += scores[subject];
+  }
+
+  studentTotals.push({ name, totalScore });
+});
+
+const subjectAverages = {};
+for (const subject in subjectTotals) {
+  subjectAverages[subject] = subjectTotals[subject] / students.length;
+}
+
+const highestScoringStudent = studentTotals.reduce((prev, curr) => {
+  return (prev.totalScore > curr.totalScore) ? prev : curr;
+});
+
+const studentAverages = students.map(student => {
+  const totalScore = Object.values(student.scores).reduce((a, b) => a + b, 0);
+  const averageScore = totalScore / Object.keys(student.scores).length;
+  return { name: student.name, averageScore };
+});
+
+console.log('Subject Averages:', subjectAverages);
+console.log('Highest Scoring Student:', highestScoringStudent);
+console.log('Student Averages:', studentAverages);
