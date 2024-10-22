@@ -1,0 +1,11 @@
+const arr = ["apple", "banana", "apple", "orange"];
+const count = {};
+for (let i = 0; i < arr.length; i++) {
+    const item = arr[i];
+    if (count[item]) {
+        count[item] += 1;
+    } else {
+        count[item] = 1;
+    }
+}
+console.log(count);
