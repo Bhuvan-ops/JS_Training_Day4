@@ -1,0 +1,17 @@
+function stringToObject(str) {
+  const charCount = {};
+
+  for (const char of str) {
+    if (charCount[char]) {
+      charCount[char] = charCount[char] + 1;
+    } else {
+      charCount[char] = 1;
+    }
+  }
+
+  return charCount;
+}
+
+const input = "hello world";
+const result = stringToObject(input);
+console.log(result); 
