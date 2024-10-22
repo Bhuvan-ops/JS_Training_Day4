@@ -1,0 +1,6 @@
+function objectToArray(obj) {
+  return Object.entries(obj);
+}
+const Obj = { a: 1, b: 2, c: 3 };
+const result = objectToArray(Obj);
+console.log(result);
