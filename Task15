@@ -1,0 +1,11 @@
+function hasProperties(obj) {
+  return Object.keys(obj).length > 0;
+}
+const input = prompt("Enter an object : ");
+const myObj = JSON.parse(input);
+
+if (hasProperties(myObj)) {
+  console.log("The object has properties.");
+} else {
+  console.log("The object has no properties.");
+}
