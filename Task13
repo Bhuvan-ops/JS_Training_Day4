@@ -1,0 +1,12 @@
+function mergeObjects(arr) {
+  const result = {};
+
+  arr.forEach(obj => {
+    Object.assign(result, { [obj.key]: obj.value });
+  });
+  return result;
+}
+
+const input = [{ key: "a", value: 1 }, { key: "b", value: 2 }, { key: "c", value: 3 }];
+const result = mergeObjects(input);
+console.log(result);
