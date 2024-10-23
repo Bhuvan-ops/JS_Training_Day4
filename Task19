@@ -1,0 +1,32 @@
+fetch("https://dummyjson.com/c/d749-5b95-40c2-892e")
+    .then((res) => res.json())
+    .then((data) => {
+        let firstAnswer = {};
+        let secondAnswer = {};
+        let thirdAnswers = [];
+        data.forEach(element => {
+            firstAnswer['orderId'] = element.orderId;
+            let sum = 0;
+            let currentThirdAnswer = {};
+
+            currentThirdAnswer['name'] = element.orderId;
+
+            element.items.forEach(item => {
+                sum += (item.quantity * item.price);
+                if (item.name in secondAnswer) {
+                    secondAnswer[item.name] += item.quantity;
+                } else {
+                    secondAnswer[item.name] = item.quantity;
+                }
+            });
+
+            firstAnswer['totalvalue'] = sum;
+            console.log(firstAnswer)
+            currentThirdAnswer['total'] = sum;
+            thirdAnswers.push(currentThirdAnswer);
+        });
+
+        console.log(secondAnswer);
+        thirdAnswers.sort((a, b) => b.totalValue - a.totalValue);
+        console.log(thirdAnswers.slice(0, 2));
+    });
